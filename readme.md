@@ -2,6 +2,8 @@
 
 A job searching site based on GitHub Jobs API with some added features.
 
+[Live site](https://jobss.netlify.app)
+
 ## Features
 
 - Search by title/position/technology
@@ -20,6 +22,6 @@ A job searching site based on GitHub Jobs API with some added features.
 
 ## Credits
 
-- The design is inspired by Frontendmentors.io
-- The gradient background was taken fron gradientmagic
-- The falback image from ---
+- The design is inspired by [Frontendmentors](https://www.frontendmentor.io/challenges/github-jobs-api-93L-NL6rP)
+- The gradient background was taken fron [gradientmagic](https://www.gradientmagic.com)
+- The falback image from [https://static.thenounproject.com/png/586523-200.png](https://static.thenounproject.com/png/586523-200.png)

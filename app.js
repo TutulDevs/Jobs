@@ -9,14 +9,10 @@ let jobsArr = [];
 // store the bookmarked jobs
 let bookJobs = JSON.parse(localStorage.getItem('bookJobs')) || [];
 
-// selected btns
-let selectedBtns = [];
 
-//https://jobs.github.com/positions.json?description=javascript&full_time=true&location=newyork
+// https://jobs.github.com/positions.json?description=javascript&full_time=true&location=newyork
 
-//const url = 'https://jobs.github.com/positions.json?description=javascript&location=newyork';
-
-async function getJobs(title, place, condition = false) {
+async function getJobs(title, place, condition) {
     const cors = 'https://cors-anywhere.herokuapp.com/';
     const base = 'https://jobs.github.com/positions.json?';
     const query = `description=${title}&full_time=${condition}&location=${place}`;
@@ -26,22 +22,19 @@ async function getJobs(title, place, condition = false) {
         return  data;
     }
     catch (err) {
-        displayError($('.main'));
+        displayError(main);
         console.log(err);
     }
 }
 
-//console.log(getJobs('aws', 'madrid'));
-
+//console.log(getJobs('javascript', 'newyork', true));
 
 
 function displayError(container) {
-    const markup = `<section class="error">
+    container.innerHTML = `<section class="error">
     <h2>No jobs available for this search.</h2>
     <p>Try changing the keywords. </p>
     </section>`;
-
-    container.insertAdjacentHTML('afterbegin', markup);
 }
 
 function displayJobs(container, arr = []) {
@@ -90,7 +83,6 @@ function hideBook() {
 
 function displayBook() {
     let btns = [...document.querySelectorAll('.toFav')];
-    selectedBtns = btns;
 
     btns.forEach(btn => {
 
@@ -161,10 +153,10 @@ async function showTime(e) {
     jobs.forEach(el => jobsArr.push(el));
 
     let size = jobsArr.length;
-    console.log(size);
+    //console.log(size);
 
     // IF size > 0 show jobs
-    size === 0 ? displayError(main): displayJobs(main, jobs);
+    size === 0 ? displayError(main): displayJobs(main, jobsArr);
 
     // display Bookmark
     displayBook();
